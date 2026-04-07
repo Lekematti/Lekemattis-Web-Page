@@ -8,6 +8,8 @@ export default [
       '**/node_modules/**',
       'Frontend/dist/**',
       'Frontend/dist-ssr/**',
+      'Frontend/coverage/**',
+      'coverage/**',
     ],
   },
 

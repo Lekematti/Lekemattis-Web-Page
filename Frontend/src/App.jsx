@@ -32,7 +32,7 @@ function App() {
           <h1>Welcome to my web page</h1>
           <p>This page contains links to my other pages and also displays content from said pages.</p>
         </div>
-        <div className="panels" role="region" aria-label="Link previews">
+        <div className="panels">
           <GitHubPanel />
           <YouTubePanel />
           <LinkedInPanel />

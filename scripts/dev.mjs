@@ -84,7 +84,9 @@ function run() {
   })();
 }
 
-run().catch((err) => {
+try {
+  await run();
+} catch (err) {
   console.error('[dev] Failed to start dev servers:', err);
   process.exit(1);
-});
+}

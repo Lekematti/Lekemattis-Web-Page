@@ -64,9 +64,9 @@ export default function YouTubePanel() {
       )}
 
       {loadError ? (
-        <div className="panelText" role="status">
+        <output className="panelText">
           YouTube preview failed to load.
-        </div>
+        </output>
       ) : null}
     </section>
   );

@@ -92,9 +92,9 @@ export default function GitHubPanel() {
       </div>
 
       {loadError ? (
-        <div className="panelText" role="status">
+        <output className="panelText">
           GitHub preview failed to load.
-        </div>
+        </output>
       ) : null}
     </section>
   );
