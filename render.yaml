@@ -21,7 +21,7 @@ services:
     rootDir: .
     plan: free
     buildCommand: npm ci
-    startCommand: node Backend/src/server.js
+    startCommand: node --experimental-sqlite Backend/src/server.js
     healthCheckPath: /api/visits
     envVars:
       - key: NODE_VERSION

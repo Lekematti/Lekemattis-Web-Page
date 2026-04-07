@@ -5,11 +5,11 @@
 		"Frontend"
 	],
 	"scripts": {
-		"start": "node Backend/src/server.js",
+		"start": "node --experimental-sqlite Backend/src/server.js",
 		"dev:auto": "node scripts/dev.mjs",
-		"dev:backend": "cross-env PORT=3002 node Backend/src/server.js",
-		"dev:backend:3001": "cross-env PORT=3001 node Backend/src/server.js",
-		"dev:backend:3002": "cross-env PORT=3002 node Backend/src/server.js",
+		"dev:backend": "cross-env PORT=3002 node --experimental-sqlite Backend/src/server.js",
+		"dev:backend:3001": "cross-env PORT=3001 node --experimental-sqlite Backend/src/server.js",
+		"dev:backend:3002": "cross-env PORT=3002 node --experimental-sqlite Backend/src/server.js",
 		"dev:frontend": "npm --workspace Frontend run dev",
 		"dev:3001": "concurrently \"npm run dev:backend:3001\" \"cross-env BACKEND_PORT=3001 npm run dev:frontend\"",
 		"dev:3002": "concurrently \"npm run dev:backend:3002\" \"cross-env BACKEND_PORT=3002 npm run dev:frontend\"",
