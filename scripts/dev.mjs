@@ -43,7 +43,7 @@ function run() {
 
     console.log(`[dev] Starting backend on port ${port}`);
 
-    const backend = spawn('node', ['Backend/src/server.js'], {
+    const backend = spawn('node', ['--experimental-sqlite', 'Backend/src/server.js'], {
       stdio: 'inherit',
       env: { ...process.env, PORT: String(port) },
     });

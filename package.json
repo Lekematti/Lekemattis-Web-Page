@@ -15,11 +15,11 @@
 		"dev:3002": "concurrently \"npm run dev:backend:3002\" \"cross-env BACKEND_PORT=3002 npm run dev:frontend\"",
 		"dev": "npm run dev:auto",
 		"build:frontend": "npm --workspace Frontend run build",
-		"test:backend": "cross-env NODE_ENV=test VISITS_DB_FILE=Backend/test-visits.sqlite node --test Backend/tests/*.test.mjs",
+		"test:backend": "cross-env NODE_ENV=test VISITS_DB_FILE=Backend/test-visits.sqlite node --experimental-sqlite --test Backend/tests/*.test.mjs",
 		"test:frontend": "npm --workspace Frontend run test:run",
 		"test": "npm run test:backend && npm run test:frontend",
 		"test:frontend:coverage": "npm --workspace Frontend run test:coverage",
-		"test:backend:coverage": "cross-env NODE_ENV=test VISITS_DB_FILE=Backend/test-visits.sqlite c8 node --test Backend/tests/*.test.mjs",
+		"test:backend:coverage": "cross-env NODE_ENV=test VISITS_DB_FILE=Backend/test-visits.sqlite c8 node --experimental-sqlite --test Backend/tests/*.test.mjs",
 		"lint": "eslint ."
 	},
 	"dependencies": {
