@@ -1,0 +1,43 @@
+{
+	"name": "lekemattis-web-page",
+	"private": true,
+	"workspaces": [
+		"Frontend"
+	],
+	"scripts": {
+		"start": "node Backend/src/server.js",
+		"dev:auto": "node scripts/dev.mjs",
+		"dev:backend": "cross-env PORT=3002 node Backend/src/server.js",
+		"dev:backend:3001": "cross-env PORT=3001 node Backend/src/server.js",
+		"dev:backend:3002": "cross-env PORT=3002 node Backend/src/server.js",
+		"dev:frontend": "npm --workspace Frontend run dev",
+		"dev:3001": "concurrently \"npm run dev:backend:3001\" \"cross-env BACKEND_PORT=3001 npm run dev:frontend\"",
+		"dev:3002": "concurrently \"npm run dev:backend:3002\" \"cross-env BACKEND_PORT=3002 npm run dev:frontend\"",
+		"dev": "npm run dev:auto",
+		"build:frontend": "npm --workspace Frontend run build",
+		"test:backend": "cross-env NODE_ENV=test VISITS_DB_FILE=Backend/test-visits.sqlite node --test Backend/tests/*.test.mjs",
+		"test:frontend": "npm --workspace Frontend run test:run",
+		"test": "npm run test:backend && npm run test:frontend",
+		"test:frontend:coverage": "npm --workspace Frontend run test:coverage",
+		"test:backend:coverage": "cross-env NODE_ENV=test VISITS_DB_FILE=Backend/test-visits.sqlite c8 node --test Backend/tests/*.test.mjs",
+		"lint": "eslint ."
+	},
+	"dependencies": {
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1"
+	},
+	"engines": {
+		"node": ">=22.12.0"
+	},
+	"devDependencies": {
+		"@eslint/js": "^9.39.2",
+		"c8": "^10.1.3",
+		"concurrently": "^7.6.0",
+		"cross-env": "^7.0.3",
+		"eslint": "^9.39.4",
+		"eslint-plugin-react": "^7.37.5",
+		"eslint-plugin-react-hooks": "^7.0.1",
+		"vite": "^7.3.1",
+		"vitest": "^4.1.3"
+	}
+}

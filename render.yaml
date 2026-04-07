@@ -1,0 +1,42 @@
+services:
+  - type: web
+    name: lekemattis-frontend
+    runtime: static
+    rootDir: .
+    buildCommand: npm ci && npm run build:frontend
+    staticPublishPath: Frontend/dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: NODE_VERSION
+        value: 22.12.0
+      - key: VITE_API_BASE_URL
+        sync: false
+
+  - type: web
+    name: lekemattis-backend
+    runtime: node
+    rootDir: .
+    plan: free
+    buildCommand: npm ci
+    startCommand: node Backend/src/server.js
+    healthCheckPath: /api/visits
+    envVars:
+      - key: NODE_VERSION
+        value: 22.12.0
+      - key: NODE_ENV
+        value: production
+      - key: CORS_ORIGIN
+        sync: false
+      - key: COOKIE_SAMESITE
+        value: None
+      - key: VISITS_DB_FILE
+        value: /var/data/visits.sqlite
+      - key: VISITS_FILE
+        value: /var/data/visits.json
+    disk:
+      name: visits-data
+      mountPath: /var/data
+      sizeGB: 1
